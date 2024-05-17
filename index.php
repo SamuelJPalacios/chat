@@ -46,7 +46,7 @@
 <span class="status busy"></span>
 </div>
 <p class="name-time">
-<span class="name">Steve</span>
+<span class="name">Juan</span>
 <span class="time">15/02/2019</span>
 </p>
 </li>
