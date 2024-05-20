@@ -18,11 +18,11 @@ $usuario = $_POST['usuario'];
 $mensaje = $_POST['mensaje'];
 
 // Preparar la consulta
-$stmt = $conn->prepare("INSERT INTO mensajes (usuario, mensaje) VALUES (?, ?)");
-$stmt->bind_param("ss", $usuario, $mensaje);
+$send = $conection->prepare("INSERT INTO mensajes (usuario, mensaje) VALUES (?, ?)");
+$send->bind_param("ss", $usuario, $mensaje);
 
 // Ejecutar la consulta
-if ($stmt->execute()) {
+if ($send->execute()) {
     echo "Mensaje enviado correctamente.";
 } else {
     echo "Error: " . $stmt->error;
@@ -31,4 +31,17 @@ if ($stmt->execute()) {
 // Cerrar la conexión
 $stmt->close();
 $conn->close();
+
+
+//Mandar a llamar los mensajes de la base de datos//
+function mensajes($db, $usuario, $mensaje, $hour){
+    $consulta = "SELECT * FROM pompom_db"
+    return historial($consulta);
+}
+
+//Registro de un nuevo usuario//
+function nuevo($user, $passwd){
+    $new = $conection->prepare("INSERT INTO mensajes (user, passwd) VALUES (?, ?)");
+    $nuevo->bind_param("ss", $usuario, $contraseña);
+})
 ?>
