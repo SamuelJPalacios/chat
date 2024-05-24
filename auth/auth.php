@@ -2,7 +2,7 @@
 require 'log/core.php';
 
 //prepara la consulta solo par el usuario en cuestion
-$stmt = $connection->prepare('SELECT id, username, pssw FROM users WHERE username = ?');
+$stmt = $connection->prepare('SELECT id, nombre_usuario, pssw FROM users WHERE nombre_usuario = ?');
 
 //obtiene el contenido de las variables 
 $username = htmlspecialchars($_POST['usuario']);
@@ -32,13 +32,13 @@ if($result->num_rows ===1) {
         //si la contraseña no coincide
         echo "Error en la contraseña";
         echo "<br>"
-        echo "<a href = 'auth/login.php'>Volver a intentar</a>";
+        echo "<a href = 'front/login.php'>Volver a intentar</a>";
     }
 } else {
     //si los datos no coinciden
     echo "Error en los datos";
     echo "<br>";
-    echo "<a href = 'auth/login.php'>Volver a intentar</a>";
+    echo "<a href = 'front/login.php'>Volver a intentar</a>";
 }
 $stmt->close();
 $connection->close();
