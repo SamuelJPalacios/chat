@@ -47,6 +47,9 @@ function nuevo($user, $passwd){
 })
 ?>
 
+<?php
+echo "prueba";
+?>
 
 
 //prueba de git funcionnando?//
