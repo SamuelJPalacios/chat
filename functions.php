@@ -40,6 +40,7 @@ function mensajes($db, $usuario, $mensaje, $hour){
 }
 
 //Registro de un nuevo usuario//
+//segundo cambio de prueba//
 function nuevo($user, $passwd){
     $new = $conection->prepare("INSERT INTO mensajes (user, passwd) VALUES (?, ?)");
     $nuevo->bind_param("ss", $usuario, $contraseña);
