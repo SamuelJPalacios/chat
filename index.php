@@ -2,6 +2,6 @@
 if ($_SESSION['conectado'] === true){
     header("Location: front/chat.php");
 } else {
-    header("Location: auth/login.php");
+    header("Location: front/signup.php");
 }
 ?>

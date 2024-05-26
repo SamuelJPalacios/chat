@@ -1,6 +1,5 @@
 <?php
-require 'log/core.php';
-
+require '../log/logcore.php';
 //prepara la consulta solo par el usuario en cuestion
 $stmt = $connection->prepare('SELECT id, nombre_usuario, pssw FROM users WHERE nombre_usuario = ?');
 
@@ -31,7 +30,7 @@ if($result->num_rows ===1) {
     } else {
         //si la contraseña no coincide
         echo "Error en la contraseña";
-        echo "<br>"
+        echo "<br>";
         echo "<a href = 'front/login.php'>Volver a intentar</a>";
     }
 } else {

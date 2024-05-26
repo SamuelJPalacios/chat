@@ -63,10 +63,10 @@
     <div class="container">        
         <h2>Sign Up</h2>
         <img src = "images/pompom2.jpg" alt = "imagen de pompom">        
-        <form action="registrar.php" method="post">
-            <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="NOMBRE">
+        <form action="../auth/register.php" method="post">
+            <input type="text" id="nombre_usuario" name="usuario" placeholder="NOMBRE">
             <input type="email" id="email" name="email" placeholder="EMAIL" required>
-            <input type="password" id="password" name="password" placeholder="PASSWORD" required>
+            <input type="password" id="password" name="passkey" placeholder="PASSWORD" required>
             <input type="submit" value="Registrarse">
         </form>
     </div>
