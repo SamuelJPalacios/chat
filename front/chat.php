@@ -5,6 +5,7 @@
 <title>bs4 simple chat app - Bootdey.com</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/8186d58590.js" crossorigin="anonymous"></script>   
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -13,13 +14,14 @@
     <div class="page-title">
     <div class="row gutters">
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+    <i class="far fa-comment" style="color: #000000;"></i>
         <h5 class="title">Chat App</h5>
     </div>
+    <i class="fas fa-chalkboard-teacher" style="color: #31af18;"></i>
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">text </div>
+        
         </div>
 </div>
-
-
 <div class="content-wrapper">
 
 <div class="row gutters">
@@ -108,13 +110,6 @@
 <span>To: <span class="name">Emily Russell</span></span>
 </div>
 <div class="chat-container">
-/*cargA CONTENIDO DE MSJS */
-
-leftEmisor=
-rigthReceptor=
-
-SQL= "SELECT * FROM mensajes where user=leftEmisor and user= rigthReceptor order by hour"
-
 <ul class="chat-box chatContainerScroll">
 <li class="chat-left">
 <div class="chat-avatar">
@@ -123,10 +118,10 @@ SQL= "SELECT * FROM mensajes where user=leftEmisor and user= rigthReceptor order
 </div>
 <div class="chat-text">Hello, I'm Russell.
 <br>How can I help you today?</div>
-<div class="chat-hour">08:55 <span class="fa fa-check-circle"></span></div>
+<div class="chat-hour">08:55</div>
 </li>
 <li class="chat-right">
-<div class="chat-hour">08:56 <span class="fa fa-check-circle"></span></div>
+<div class="chat-hour">08:56</div>
 <div class="chat-text">Hi, Russell
 <br> I need more information about Developer Plan.</div>
 <div class="chat-avatar">
@@ -141,10 +136,10 @@ SQL= "SELECT * FROM mensajes where user=leftEmisor and user= rigthReceptor order
 </div>
 <div class="chat-text">Are we meeting today?
 <br>Project has been already finished and I have results to show you.</div>
-<div class="chat-hour">08:57 <span class="fa fa-check-circle"></span></div>
+<div class="chat-hour">08:57</div>
 </li>
 <li class="chat-right">
-<div class="chat-hour">08:59 <span class="fa fa-check-circle"></span></div>
+<div class="chat-hour">08:59</div>
 <div class="chat-text">Well I am not sure.
 <br>I have results to show you.</div>
 <div class="chat-avatar">
@@ -159,10 +154,10 @@ SQL= "SELECT * FROM mensajes where user=leftEmisor and user= rigthReceptor order
 </div>
 <div class="chat-text">The rest of the team is not here yet.
 <br>Maybe in an hour or so?</div>
-<div class="chat-hour">08:57 <span class="fa fa-check-circle"></span></div>
+<div class="chat-hour">08:57</div>
 </li>
 <li class="chat-right">
-<div class="chat-hour">08:59 <span class="fa fa-check-circle"></span></div>
+<div class="chat-hour">08:59</div>
 <div class="chat-text">Have you faced any problems at the last phase of the project?</div>
 <div class="chat-avatar">
 <img src="https://www.bootdey.com/img/Content/avatar/avatar4.png" alt="Retail Admin">
@@ -176,11 +171,16 @@ SQL= "SELECT * FROM mensajes where user=leftEmisor and user= rigthReceptor order
 </div>
 <div class="chat-text">Actually everything was fine.
 <br>I'm very excited to show this to our team.</div>
-<div class="chat-hour">07:00 <span class="fa fa-check-circle"></span></div>
+<div class="chat-hour">07:00</div>
 </li>
 </ul>
 <div class="form-group mt-3 mb-0">
-<textarea class="form-control" rows="3" placeholder="Type your message here..."></textarea>text
+    <div class="input-group">
+        <textarea class="form-control" rows="3" placeholder="Type your message here..."></textarea>
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button">Enviar</button>
+        </div>
+    </div>
 </div>
 </div>
 </div>
@@ -196,7 +196,7 @@ SQL= "SELECT * FROM mensajes where user=leftEmisor and user= rigthReceptor order
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript">
-	
+    
 </script>
 </body>
 </html>
