@@ -28,12 +28,17 @@ $resultado = $conn->query($nombres_usuarios);
     <div class="page-title">
     <div class="row gutters">
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-        <h5 class="title">POM POM CHAT</h5>
+        <style>
+            .title {
+                text-align: right;
+            }
+        </style>
     </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"><img src="../images/pompom.png"></div>
-        </div>
-</div>
 
+        <div><class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"><img src="../images/pompom.png" width="150" height="150">
+        </div>
+</div>        
+</div>
 <div class="content-wrapper">
 
 <div class="row gutters">
@@ -75,7 +80,7 @@ $conn->close();
 </div>
 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
 <div class="selected-user">
-<span>To: <span class="name">Emily Russell</span></span>
+<span> <span class="name">Wellcome to astral express</span></span>
 </div>
 <div class="chat-container">
 /*cargA CONTENIDO DE MSJS */
