@@ -1,7 +1,9 @@
 <?php
 require '../log/logcore.php';
+
+//$connection=mysqli_connect('localhost','root','','pompom_db');
 //prepara la consulta solo par el usuario en cuestion
-$stmt = $connection->prepare('SELECT id, nombre_usuario, pssw FROM users WHERE nombre_usuario = ?');
+$stmt = $conn->prepare('SELECT id, user, pssw FROM users WHERE user = ?');
 
 //obtiene el contenido de las variables 
 $username = htmlspecialchars($_POST['usuario']);
@@ -25,8 +27,10 @@ if($result->num_rows ===1) {
         $_SESSION['user'] = $username;
         $_SESSION['id'] = $row['id']; //almacena el id del usuario para cuando se neecesite
 
+        $idusr= $row['id'];
+        $url="../index.php?id=$idusr";
         //redirecciona al chat
-        header('Location: index.php');
+        header("Location: $url");
     } else {
         //si la contraseña no coincide
         echo "Error en la contraseña";

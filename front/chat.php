@@ -2,23 +2,37 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>bs4 simple chat app - Bootdey.com</title>
+<title>PomPom Chat</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+<?php
+require '../log/logcore.php';
+$conectedid = $_GET['id'];
+
+$msjizq="SELECT * from chat order by hour ";
+$msjdcha = "select * from chat where id = ".$conectedid."";
+$resizq= $conn->query($msjizq);
+
+
+$nombres_usuarios = "SELECT user FROM users";
+$resultado = $conn->query($nombres_usuarios);
+
+?>
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+
 <div class="container">
     <div class="page-title">
     <div class="row gutters">
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-        <h5 class="title">Chat App</h5>
+        <h5 class="title">POM POM CHAT</h5>
     </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">text </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"><img src="../images/pompom.png"></div>
         </div>
 </div>
-
 
 <div class="content-wrapper">
 
@@ -39,67 +53,23 @@
 </div>
 </div>
 </div>
-<ul class="users">
-<li class="person" data-chat="person1">
+    <ul class="users">
+<?php while ($rowusers = $resultado->fetch_array(MYSQLI_ASSOC)){ ?>
+    <li class="person" data-chat="person1">
 <div class="user">
 <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
 <span class="status busy"></span>
 </div>
 <p class="name-time">
-<span class="name">Juan</span>
+<span class="name"><?php echo $rowusers['user']; ?></span>
 <span class="time">15/02/2019</span>
 </p>
 </li>
-<li class="person" data-chat="person1">
-<div class="user">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="Retail Admin">
-<span class="status offline"></span>
-</div>
-<p class="name-time">
-<span class="name">Steve Bangalter</span>
-<span class="time">15/02/2019</span>
-</p>
-</li>
-<li class="person active-user" data-chat="person2">
-<div class="user">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar2.png" alt="Retail Admin">
-<span class="status away"></span>
-</div>
-<p class="name-time">
-<span class="name">Peter Gregor</span>
-<span class="time">12/02/2019</span>
-</p>
-</li>
-<li class="person" data-chat="person3">
-<div class="user">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-<span class="status busy"></span>
-</div>
-<p class="name-time">
-<span class="name">Jessica Larson</span>
-<span class="time">11/02/2019</span>
-</p>
-</li>
-<li class="person" data-chat="person4">
-<div class="user">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar4.png" alt="Retail Admin">
-<span class="status offline"></span>
-</div>
-<p class="name-time">
-<span class="name">Lisa Guerrero</span>
-<span class="time">08/02/2019</span>
-</p>
-</li>
-<li class="person" data-chat="person5">
-<div class="user">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar5.png" alt="Retail Admin">
-<span class="status away"></span>
-</div>
-<p class="name-time">
-<span class="name">Michael Jordan</span>
-<span class="time">05/02/2019</span>
-</p>
-</li>
+
+<?php }
+// Cerrar la conexión
+$conn->close();
+?>
 </ul>
 </div>
 </div>
@@ -116,24 +86,31 @@ rigthReceptor=
 SQL= "SELECT * FROM mensajes where user=leftEmisor and user= rigthReceptor order by hour"
 
 <ul class="chat-box chatContainerScroll">
+<?php while ($rowizq = $resizq->fetch_array(MYSQLI_ASSOC)){ ?>
 <li class="chat-left">
 <div class="chat-avatar">
 <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-<div class="chat-name">Russell</div>
+<div class="chat-name"><?php echo $rowizq['user']; ?></div>
 </div>
-<div class="chat-text">Hello, I'm Russell.
-<br>How can I help you today?</div>
-<div class="chat-hour">08:55 <span class="fa fa-check-circle"></span></div>
+<div class="chat-text">
+    <?php echo $rowizq['mssg']; ?>
+</div>
+<div class="chat-hour"><?php echo $rowizq['hour']; ?> <span class="fa fa-check-circle"></span></div>
 </li>
+<?php } ?>
+
+
 <li class="chat-right">
 <div class="chat-hour">08:56 <span class="fa fa-check-circle"></span></div>
 <div class="chat-text">Hi, Russell
 <br> I need more information about Developer Plan.</div>
 <div class="chat-avatar">
 <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-<div class="chat-name">Sam</div>
+<div class="chat-name"><?php $_SESSION['user']; ?></div>
 </div>
 </li>
+
+
 <li class="chat-left">
 <div class="chat-avatar">
 <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">

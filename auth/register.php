@@ -21,7 +21,7 @@ if (!empty($nombre_usuario) && !empty($email) && !empty($password)) {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Preparar y vincular
-    $stmt = $conn->prepare("INSERT INTO users (nombre_usuario, email, pssw) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO users (user, email, pssw) VALUES (?, ?, ?)");
     if ($stmt === false) {
         die("Error en la preparación de la consulta: " . $conn->error);
     }
@@ -31,7 +31,7 @@ if (!empty($nombre_usuario) && !empty($email) && !empty($password)) {
     // Ejecutar la declaración
     if ($stmt->execute()) {
         echo "Registro exitoso. Bienvenido, " . htmlspecialchars($nombre_usuario) . " !";
-        header("Location: front/login.php");
+        header("Location: ../front/login.php");
     } else {
         echo "Error en la ejecución de la consulta: " . $stmt->error;
     }
