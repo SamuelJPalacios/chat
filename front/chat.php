@@ -18,8 +18,6 @@
         <h5 class="title">Chat App</h5>
     </div>
     <i class="fas fa-chalkboard-teacher" style="color: #31af18;"></i>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">text </div>
-        
         </div>
 </div>
 <div class="content-wrapper">
@@ -60,7 +58,7 @@
 <p class="name-time">
 <span class="name">Steve Bangalter</span>
 <span class="time">15/02/2019</span>
-</p>
+</p> 
 </li>
 <li class="person active-user" data-chat="person2">
 <div class="user">
@@ -118,10 +116,13 @@
 </div>
 <div class="chat-text">Hello, I'm Russell.
 <br>How can I help you today?</div>
-<div class="chat-hour">08:55</div>
+<div class="chat-hour">08:55<i class="far fa-check-circle" style="color: #13dd2b;"></i>   </div>
+
+
+
 </li>
 <li class="chat-right">
-<div class="chat-hour">08:56</div>
+<div class="chat-hour">08:56 <i class="far fa-check-circle" style="color: #13dd2b;"></i> </div>
 <div class="chat-text">Hi, Russell
 <br> I need more information about Developer Plan.</div>
 <div class="chat-avatar">
@@ -136,10 +137,10 @@
 </div>
 <div class="chat-text">Are we meeting today?
 <br>Project has been already finished and I have results to show you.</div>
-<div class="chat-hour">08:57</div>
+<div class="chat-hour">08:57 <i class="far fa-check-circle" style="color: #13dd2b;"></i> </div>
 </li>
 <li class="chat-right">
-<div class="chat-hour">08:59</div>
+<div class="chat-hour">08:59 <i class="far fa-check-circle" style="color: #13dd2b;"></i> </div>
 <div class="chat-text">Well I am not sure.
 <br>I have results to show you.</div>
 <div class="chat-avatar">
@@ -154,10 +155,10 @@
 </div>
 <div class="chat-text">The rest of the team is not here yet.
 <br>Maybe in an hour or so?</div>
-<div class="chat-hour">08:57</div>
+<div class="chat-hour">08:57 <i class="far fa-check-circle" style="color: #13dd2b;"></i> </div>
 </li>
 <li class="chat-right">
-<div class="chat-hour">08:59</div>
+<div class="chat-hour">08:59 <i class="far fa-check-circle" style="color: #13dd2b;"></i> </div>
 <div class="chat-text">Have you faced any problems at the last phase of the project?</div>
 <div class="chat-avatar">
 <img src="https://www.bootdey.com/img/Content/avatar/avatar4.png" alt="Retail Admin">
@@ -171,7 +172,7 @@
 </div>
 <div class="chat-text">Actually everything was fine.
 <br>I'm very excited to show this to our team.</div>
-<div class="chat-hour">07:00</div>
+<div class="chat-hour">07:00 <i class="far fa-check-circle" style="color: #13dd2b;"></i> </div>
 </li>
 </ul>
 <div class="form-group mt-3 mb-0">
