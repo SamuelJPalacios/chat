@@ -7,19 +7,22 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <?php
 require '../log/logcore.php';
 $conectedid = $_GET['id'];
 
-$msjizq="SELECT * FROM chat  WHERE id LIKE  ";
-$msjdcha = "select * from chat where id = ".$conectedid."";
-$resizq= $conn->query($msjizq);
+$msjizq="SELECT * FROM chat WHERE id != ".$conectedid."";
+$msjdcha = "SELECT * FROM chat WHERE id = ".$conectedid."";
+$resizq= $conn->query($msjizq); 
+$resder = $conn->query($msjdcha);
 
 
 $nombres_usuarios = "SELECT user FROM users";
 $resultado = $conn->query($nombres_usuarios);
 
 ?>
+
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -60,9 +63,11 @@ $resultado = $conn->query($nombres_usuarios);
 <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
 <span class="status busy"></span>
 </div>
+
 <p class="name-time">
 <span class="name"><?php echo $rowusers['user']; ?></span>
 </p>
+
 </li>
 
 <?php }
@@ -85,26 +90,25 @@ $conn->close();
                     <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
                     <div class="chat-name"><?php echo $rowizq['user']; ?></div>
                 </div>
-                <div class="chat-text">
-                    <?php echo $rowizq['mssg']; ?>
-                </div>
+                <div class="chat-text"><?php echo $rowizq['mssg']; ?></div>
                 <div class="chat-hour"><?php echo $rowizq['hour']; ?> <span class="fa fa-check-circle"></span></div>
             </li>
         <?php } ?>
 
-        <?php ?>
+        <?php while ($rowder = $resder->fetch_array(MYSQLI_ASSOC)){?>
             <li class="chat-right">
-                <div class="chat-hour">08:56 <span class="fa fa-check-circle"></span></div>
-                <div class="chat-text">Hi, Russell</div>
                 <div class="chat-avatar">
                     <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
                     <div class="chat-name"><?php $_SESSION['user']; ?></div>
                 </div>
+                <div class="chat-text"><?php echo $rowder['mssg'];?></div>
+                <div class="chat-hour"><?php echo $rowder['hour'];?><span class="fa fa-check-circle"></span></div>  
             </li>
+        <?php }?>
     </ul>
 
     <div class="form-group mt-3 mb-0">
-        <textarea class="form-control" rows="3" placeholder="Type your message here..."></textarea>text
+        <textarea class="form-control" rows="1" placeholder="Taip yur mensaje"></textarea>
     </div>
 </div>
 </div>
