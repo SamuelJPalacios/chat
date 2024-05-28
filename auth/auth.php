@@ -45,4 +45,3 @@ if($result->num_rows ===1) {
 }
 $stmt->close();
 $connection->close();
-?>

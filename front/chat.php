@@ -29,107 +29,102 @@ $resultado = $conn->query($nombres_usuarios);
 
 <div class="container">
     <div class="page-title">
-    <div class="row gutters">
-    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-        <style>
-            .title {
-                text-align: right;
-            }
-        </style>
+        <div class="row gutters">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <style>
+                    .title {
+                        text-align: right;
+                    }
+                </style>
+            </div>
+                <div><class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"><img src="../images/pompom.png" width="150" height="150"></div>
+        </div>        
     </div>
-
-        <div><class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"><img src="../images/pompom.png" width="150" height="150">
-        </div>
-</div>        
 </div>
+
 <div class="content-wrapper">
+    <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card m-0">
+                <div class="row no-gutters">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                        <div class="users-container">
+                            <div class="chat-search-box">
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="Search">
+                                        <div class="input-group-btn">       
+                                            <button type="button" class="btn btn-info">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            <ul class="users">
+                            <?php while ($rowusers = $resultado->fetch_array(MYSQLI_ASSOC)){ ?>
+                                <li class="person" data-chat="person1">
+                            <div class="user">
+                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                            <span class="status busy"></span>
+                            </div>
 
-<div class="row gutters">
-<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-<div class="card m-0">
+                            <p class="name-time">
+                            <span class="name"><?php echo $rowusers['user']; ?></span>
+                            </p>
 
-<div class="row no-gutters">
-<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
-<div class="users-container">
-<div class="chat-search-box">
-<div class="input-group">
-<input class="form-control" placeholder="Search">
-<div class="input-group-btn">
-<button type="button" class="btn btn-info">
-<i class="fa fa-search"></i>
-</button>
-</div>
-</div>
-</div>
-    <ul class="users">
-<?php while ($rowusers = $resultado->fetch_array(MYSQLI_ASSOC)){ ?>
-    <li class="person" data-chat="person1">
-<div class="user">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-<span class="status busy"></span>
-</div>
+                            </li>
 
-<p class="name-time">
-<span class="name"><?php echo $rowusers['user']; ?></span>
-</p>
+                            <?php }
+                            // Cerrar la conexión
+                            $conn->close();
+                            ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+                        <div class="selected-user">
+                            <span class="name">Wellcome to the Astral Express</span>
+                        </div>
+                        <div class="chat-container">
+                            <ul class="chat-box chatContainerScroll">
+                                <?php while ($rowizq = $resizq->fetch_array(MYSQLI_ASSOC)){ ?>
+                                    <li class="chat-left">
+                                        <div class="chat-avatar">
+                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                            <div class="chat-name"><?php echo $rowizq['user']; ?></div>
+                                        </div>
+                                        <div class="chat-text"><?php echo $rowizq['mssg']; ?></div>
+                                        <div class="chat-hour"><?php echo $rowizq['hour']; ?> <span class="fa fa-check-circle"></span></div>
+                                    </li>
+                                <?php } ?>
 
-</li>
-
-<?php }
-// Cerrar la conexión
-$conn->close();
-?>
-</ul>
-</div>
-</div>
-<div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-<div class="selected-user">
-<span class="name">Wellcome to the Astral Express</span>
-</div>
-
-<div class="chat-container">
-    <ul class="chat-box chatContainerScroll">
-        <?php while ($rowizq = $resizq->fetch_array(MYSQLI_ASSOC)){ ?>
-            <li class="chat-left">
-                <div class="chat-avatar">
-                    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                    <div class="chat-name"><?php echo $rowizq['user']; ?></div>
+                                <?php while ($rowder = $resder->fetch_array(MYSQLI_ASSOC)){?>
+                                    <li class="chat-right">
+                                        <div class="chat-avatar">
+                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                            <div class="chat-name"><?php $_SESSION['user']; ?></div>
+                                        </div>
+                                        <div class="chat-text"><?php echo $rowder['mssg'];?></div>
+                                        <div class="chat-hour"><?php echo $rowder['hour'];?><span class="fa fa-check-circle"></span></div>  
+                                    </li>
+                                <?php }?>
+                            </ul>
+                            <div class="chat-message clearfix">
+                                <div class="input-group mb-0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-send"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Enter text here...">                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="chat-text"><?php echo $rowizq['mssg']; ?></div>
-                <div class="chat-hour"><?php echo $rowizq['hour']; ?> <span class="fa fa-check-circle"></span></div>
-            </li>
-        <?php } ?>
-
-        <?php while ($rowder = $resder->fetch_array(MYSQLI_ASSOC)){?>
-            <li class="chat-right">
-                <div class="chat-avatar">
-                    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                    <div class="chat-name"><?php $_SESSION['user']; ?></div>
-                </div>
-                <div class="chat-text"><?php echo $rowder['mssg'];?></div>
-                <div class="chat-hour"><?php echo $rowder['hour'];?><span class="fa fa-check-circle"></span></div>  
-            </li>
-        <?php }?>
-    </ul>
-
-    <div class="form-group mt-3 mb-0">
-        <textarea class="form-control" rows="1" placeholder="Taip yur mensaje"></textarea>
+            </div>
+        </div>
     </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript"></script>
 </div>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-
-</div>
-
-</div>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript">
-	
-</script>
 </body>
 </html>
