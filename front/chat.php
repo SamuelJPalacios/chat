@@ -11,7 +11,7 @@
 require '../log/logcore.php';
 $conectedid = $_GET['id'];
 
-$msjizq="SELECT * from chat order by hour ";
+$msjizq="SELECT * FROM chat  WHERE id LIKE  ";
 $msjdcha = "select * from chat where id = ".$conectedid."";
 $resizq= $conn->query($msjizq);
 
@@ -67,7 +67,6 @@ $resultado = $conn->query($nombres_usuarios);
 </div>
 <p class="name-time">
 <span class="name"><?php echo $rowusers['user']; ?></span>
-<span class="time">15/02/2019</span>
 </p>
 </li>
 
@@ -80,90 +79,38 @@ $conn->close();
 </div>
 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
 <div class="selected-user">
-<span> <span class="name">Wellcome to astral express</span></span>
+<span class="name">Wellcome to the Astral Express</span>
 </div>
+
 <div class="chat-container">
-/*cargA CONTENIDO DE MSJS */
+    <ul class="chat-box chatContainerScroll">
+        <?php while ($rowizq = $resizq->fetch_array(MYSQLI_ASSOC)){ ?>
+            <li class="chat-left">
+                <div class="chat-avatar">
+                    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                    <div class="chat-name"><?php echo $rowizq['user']; ?></div>
+                </div>
+                <div class="chat-text">
+                    <?php echo $rowizq['mssg']; ?>
+                </div>
+                <div class="chat-hour"><?php echo $rowizq['hour']; ?> <span class="fa fa-check-circle"></span></div>
+            </li>
+        <?php } ?>
 
-leftEmisor=
-rigthReceptor=
+        <?php ?>
+            <li class="chat-right">
+                <div class="chat-hour">08:56 <span class="fa fa-check-circle"></span></div>
+                <div class="chat-text">Hi, Russell</div>
+                <div class="chat-avatar">
+                    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                    <div class="chat-name"><?php $_SESSION['user']; ?></div>
+                </div>
+            </li>
+    </ul>
 
-SQL= "SELECT * FROM mensajes where user=leftEmisor and user= rigthReceptor order by hour"
-
-<ul class="chat-box chatContainerScroll">
-<?php while ($rowizq = $resizq->fetch_array(MYSQLI_ASSOC)){ ?>
-<li class="chat-left">
-<div class="chat-avatar">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-<div class="chat-name"><?php echo $rowizq['user']; ?></div>
-</div>
-<div class="chat-text">
-    <?php echo $rowizq['mssg']; ?>
-</div>
-<div class="chat-hour"><?php echo $rowizq['hour']; ?> <span class="fa fa-check-circle"></span></div>
-</li>
-<?php } ?>
-
-
-<li class="chat-right">
-<div class="chat-hour">08:56 <span class="fa fa-check-circle"></span></div>
-<div class="chat-text">Hi, Russell
-<br> I need more information about Developer Plan.</div>
-<div class="chat-avatar">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-<div class="chat-name"><?php $_SESSION['user']; ?></div>
-</div>
-</li>
-
-
-<li class="chat-left">
-<div class="chat-avatar">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-<div class="chat-name">Russell</div>
-</div>
-<div class="chat-text">Are we meeting today?
-<br>Project has been already finished and I have results to show you.</div>
-<div class="chat-hour">08:57 <span class="fa fa-check-circle"></span></div>
-</li>
-<li class="chat-right">
-<div class="chat-hour">08:59 <span class="fa fa-check-circle"></span></div>
-<div class="chat-text">Well I am not sure.
-<br>I have results to show you.</div>
-<div class="chat-avatar">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar5.png" alt="Retail Admin">
-<div class="chat-name">Joyse</div>
-</div>
-</li>
-<li class="chat-left">
-<div class="chat-avatar">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-<div class="chat-name">Russell</div>
-</div>
-<div class="chat-text">The rest of the team is not here yet.
-<br>Maybe in an hour or so?</div>
-<div class="chat-hour">08:57 <span class="fa fa-check-circle"></span></div>
-</li>
-<li class="chat-right">
-<div class="chat-hour">08:59 <span class="fa fa-check-circle"></span></div>
-<div class="chat-text">Have you faced any problems at the last phase of the project?</div>
-<div class="chat-avatar">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar4.png" alt="Retail Admin">
-<div class="chat-name">Jin</div>
-</div>
-</li>
-<li class="chat-left">
-<div class="chat-avatar">
-<img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-<div class="chat-name">Russell</div>
-</div>
-<div class="chat-text">Actually everything was fine.
-<br>I'm very excited to show this to our team.</div>
-<div class="chat-hour">07:00 <span class="fa fa-check-circle"></span></div>
-</li>
-</ul>
-<div class="form-group mt-3 mb-0">
-<textarea class="form-control" rows="3" placeholder="Type your message here..."></textarea>text
-</div>
+    <div class="form-group mt-3 mb-0">
+        <textarea class="form-control" rows="3" placeholder="Type your message here..."></textarea>text
+    </div>
 </div>
 </div>
 </div>
