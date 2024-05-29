@@ -108,14 +108,10 @@ $resultado = $conn->query($nombres_usuarios);
                                     </li>
                                 <?php }?>
                             </ul>
-                            <div class="chat-message clearfix">
-                                <div class="input-group mb-0">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-send"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Enter text here...">                                    
-                                </div>
-                            </div>
+                            <form action="send.php" method="post">
+                                <textarea id="textarea" name="message" rows="2" cols="20"></textarea>
+                                <button type="submit">Enviar</button>
+                            </form>
                         </div>
                     </div>
                 </div>
