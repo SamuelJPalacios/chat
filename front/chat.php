@@ -12,7 +12,7 @@
 require '../log/logcore.php';
 $conectedid = $_GET['id'];
 
-$msjizq="SELECT * FROM chat WHERE id != $conectedid";
+$msjizq="SELECT * FROM chat WHERE id != ".$conectedid."";
 $msjdcha = "SELECT * FROM chat WHERE id = ".$conectedid."";
 $resizq= $conn->query($msjizq); 
 $resder = $conn->query($msjdcha);

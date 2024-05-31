@@ -3,7 +3,7 @@ require 'auth.php';
   
 $id = $_GET['id'];
 
-$sql="selec * from users where id=".$id."";
+$sql="SELECT * FROM users WHERE id=".$id."";
 
 $usuario = $_SESSION['user'];
 $hora = new DateTime();

@@ -50,9 +50,9 @@
 <img src="../images/pompom2.jpg" alt="img del pompom">
     <form action="../auth/auth.php" method="POST">
         <h2>LOGIN</h2>
-        <input type="text" name="usuario" placeholder="User" required>
-        <input type="password" name="passkey" placeholder="password" required>
-        <input type="submit" value="Iniciar sesión">
+        <input type="text" id="usuaior" name="usuario" placeholder="User" required>
+        <input type="password" id="paskey" name="passkey" placeholder="password" required>
+        <input type="submit" value="Iniciar sesión"></input>
         <a href="signup.php">Registro</a> 
     </form>
 </body>
