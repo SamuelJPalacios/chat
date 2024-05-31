@@ -1,9 +1,15 @@
 <?php 
+require 'auth.php';
+  
+$id = $_GET['id'];
 
-$id = $_SESSION['id'];
+$sql="selec * from users where id=".$id."";
+
 $usuario = $_SESSION['user'];
 $hora = new DateTime();
 $mensaje = $_POST['message'];
+
+echo $mensaje;
 
 
 require '../log/logcore.php';

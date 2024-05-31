@@ -44,4 +44,4 @@ if($result->num_rows ===1) {
     echo "<a href = 'front/login.php'>Volver a intentar</a>";
 }
 $stmt->close();
-$connection->close();
+$conn->close();

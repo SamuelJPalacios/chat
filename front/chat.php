@@ -12,7 +12,7 @@
 require '../log/logcore.php';
 $conectedid = $_GET['id'];
 
-$msjizq="SELECT * FROM chat WHERE id != ".$conectedid."";
+$msjizq="SELECT * FROM chat WHERE id != $conectedid";
 $msjdcha = "SELECT * FROM chat WHERE id = ".$conectedid."";
 $resizq= $conn->query($msjizq); 
 $resder = $conn->query($msjdcha);
@@ -41,6 +41,10 @@ $resultado = $conn->query($nombres_usuarios);
         </div>        
     </div>
 </div>
+
+<!-- En cualquier página autenticada, por ejemplo, en dashboard.php -->
+<a href="../auth/logout.php">Cerrar Sesión</a>
+
 
 <div class="content-wrapper">
     <div class="row gutters">
@@ -108,9 +112,9 @@ $resultado = $conn->query($nombres_usuarios);
                                     </li>
                                 <?php }?>
                             </ul>
-                            <form action="send.php" method="post">
+                            <form action="../auth/send.php?id=<?php echo $conectedid; ?>" method="POST">
                                 <textarea id="textarea" name="message" rows="2" cols="20"></textarea>
-                                <button type="submit">Enviar</button>
+                                <input type="submit" value="Enviar">
                             </form>
                         </div>
                     </div>
