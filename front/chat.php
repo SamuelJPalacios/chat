@@ -12,37 +12,16 @@
 require '../log/logcore.php';
 $conectedid = $_GET['id'];
 
-$msjizq = "SELECT * FROM chat WHERE id != " . $conectedid;
-$msjdcha = "SELECT * FROM chat WHERE id = " . $conectedid;
+// Consulta única para obtener todos los mensajes, ordenados por ID
+$mensajes = "SELECT * FROM chat ORDER BY hour";
+$resultado_mensajes = $conn->query($mensajes);
 
-$resizq = $conn->query($msjizq); 
-if ($resizq === false) {
-    die ("Error en mensaje izquierda: " . $conn->error);
-}
-
-$resder = $conn->query($msjdcha);
-if ($resder === false) {
-    die ("Error en mensaje derecha ". $conn->error);
-}
-
-while($izq = $resizq->fetch_assoc()){
-    $idzq = $izq["id"];
-    $userzq = $izq["user"];
-    $hourzq = $izq["hour"];
-    $mssgzq = $izq["mssg"];
-    echo "BURBUJA IZQUIERDA = ID: $idzq, Usuario: $userzq, Hora: $hourzq, Mensaje: $mssgzq<br>";    
-}
-
-while($der = $resder->fetch_assoc()){
-    $idder = $der["id"];
-    $userder = $der["user"];
-    $hourder = $der["hour"];
-    $mssgder = $der["mssg"];
-    echo "BURBUJA DERECHA = ID: $idder, Usuario: $userder, Hora: $hourder, Mensaje: $mssgder<br>";
+if ($resultado_mensajes === false) {
+    die ("Error en la consulta de mensajes: " . $conn->error);
 }
 
 $nombres_usuarios = "SELECT user FROM users";
-$resultado = $conn->query($nombres_usuarios);
+$resultado_usuarios = $conn->query($nombres_usuarios);
 
 ?>
 
@@ -86,7 +65,7 @@ $resultado = $conn->query($nombres_usuarios);
                                 </div>
 
                             <ul class="users">
-                                <?php while ($rowusers = $resultado->fetch_array(MYSQLI_ASSOC)){ ?>
+                                <?php while ($rowusers = $resultado_usuarios->fetch_array(MYSQLI_ASSOC)){ ?>
                                     <li class="person" data-chat="person1">
                                         <div class="user">
                                             <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
@@ -109,27 +88,27 @@ $resultado = $conn->query($nombres_usuarios);
 
                         <div class="chat-container">
                             <ul class="chat-box chatContainerScroll">
-                                <?php while ($rowizquierdo = $resizq->fetch_array(MYSQLI_ASSOC)){ ?>
+                            <?php while ($mensaje = $resultado_mensajes->fetch_array(MYSQLI_ASSOC)){ ?>
+                                <?php if ($mensaje['id'] == $conectedid) { ?>
                                     <li class="chat-left">
                                         <div class="chat-avatar">
                                             <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <div class="chat-name"><?php echo $userzq; ?></div>
+                                            <div class="chat-name"><?php echo $mensaje['user']; ?></div>
                                         </div>
-                                        <div class="chat-text"><?php echo $mssgzq; ?></div>
-                                        <div class="chat-hour"><?php echo $hourzq; ?><span class="fa fa-check-circle"></span></div>
+                                        <div class="chat-text"><?php echo $mensaje['mssg']; ?></div>
+                                        <div class="chat-hour"><?php echo $mensaje['hour']; ?><span class="fa fa-check-circle"></span></div>
                                     </li>
-                                <?php } ?>
-
-                                <?php while ($rowder = $resder->fetch_array(MYSQLI_ASSOC)){?>
+                                <?php } else { ?>
                                     <li class="chat-right">
                                         <div class="chat-avatar">
                                             <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <div class="chat-name"><?php echo $userder; ?></div>
+                                            <div class="chat-name"><?php echo $mensaje['user']; ?></div>
                                         </div>
-                                        <div class="chat-text"><?php echo $mssgder;?></div>
-                                        <div class="chat-hour"><?php echo $hourder;?><span class="fa fa-check-circle"></span></div>  
+                                        <div class="chat-text"><?php echo $mensaje['mssg']; ?></div>
+                                        <div class="chat-hour"><?php echo $mensaje['hour']; ?><span class="fa fa-check-circle"></span></div>  
                                     </li>
-                                <?php }?>
+                                    <?php } ?>
+                                <?php } ?>
                             </ul>
                             
                             <form action="../auth/send.php ?>" method="POST">
