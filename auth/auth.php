@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../log/logcore.php';
 
 //$connection=mysqli_connect('localhost','root','','pompom_db');
@@ -35,13 +36,13 @@ if($result->num_rows ===1) {
         //si la contraseña no coincide
         echo "Error en la contraseña";
         echo "<br>";
-        echo "<a href = 'front/login.php'>Volver a intentar</a>";
+        echo "<a href = '../front/login.php'>Volver a intentar</a>";
     }
 } else {
     //si los datos no coinciden
     echo "Error en los datos";
     echo "<br>";
-    echo "<a href = 'front/login.php'>Volver a intentar</a>";
+    echo "<a href = '../front/login.php'>Volver a intentar</a>";
 }
 $stmt->close();
 $conn->close();

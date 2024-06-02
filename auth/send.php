@@ -1,27 +1,25 @@
 <?php 
-require 'auth.php';
-  
-$id = $_GET['id'];
-
-$sql="SELECT * FROM users WHERE id=".$id."";
-
-$usuario = $_SESSION['user'];
-$hora = new DateTime();
-$mensaje = $_POST['message'];
-
-echo $mensaje;
-
-
 require '../log/logcore.php';
+require 'auth.php';
+
+$id = $_SESSION['id'];
+$mensaje = $_POST['message'];
+$hora = new DateTime();
+
+$sql="SELECT user FROM users WHERE id=".$id."";
+$result = $conn->query($sql);
+while ($row = $result->fetch_assoc()) {
+    $nombre = $row["user"];
+}
 
 //prepara la consulta 
 $stmt = $conn->prepare('INSERT INTO chat (id, user, hour, mssg) VALUES (?, ?, ?, ?)');
-$mensaje = $conn->prepare('$stmt');
+$hora_formato = $hora->format('H:i');
+$stmt->bind_param('isss', $id, $nombre, $hora_formato, $mensaje);
+$stmt->execute();
+$stmt->close();
+$conn->close();
 
-//pasar el valor a la consulta
-$mensaje->bind_param('ssss', $id, $usuario, $hora->format('H:i'), $mensaje);
-
-//ejecutar la consulta 
-$mensaje->execute();
-
+$url="../index.php?id=$id";
+header("Location: $url");
 ?>
