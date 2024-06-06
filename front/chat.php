@@ -45,7 +45,6 @@ $resultado_usuarios = $conn->query($nombres_usuarios);
 </div>
 
 <a href="../auth/logout.php">Cerrar Sesión</a>
-
 <div class="content-wrapper">
     <div class="row gutters">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -85,8 +84,21 @@ $resultado_usuarios = $conn->query($nombres_usuarios);
                         <div class="selected-user">
                             <span class="name">WELLCOME TO THE ASTRAL EXPRESS</span>
                         </div>
-
                         <div class="chat-container">
+                        <style>
+                            .scroll-container {
+                             width: 100%;
+                             height: 300px; /* Ajusta la altura según sea necesario */
+                             overflow-y: scroll;
+                             border: 1px solid #ccc;
+                             padding: 10px;
+                             }
+                             .content {
+                             height: 600px; /* Ajusta la altura según sea necesario */
+                             background: linear-gradient(#f0f0f0, #ccc);
+                                }
+                        </style>
+                        <div class="scroll-container">
                             <ul class="chat-box chatContainerScroll">
                             <?php while ($mensaje = $resultado_mensajes->fetch_array(MYSQLI_ASSOC)){ ?>
                                 <?php if ($mensaje['id'] == $conectedid) { ?>
@@ -110,9 +122,9 @@ $resultado_usuarios = $conn->query($nombres_usuarios);
                                     <?php } ?>
                                 <?php } ?>
                             </ul>
-                            
+                            </div>
                             <form action="../auth/send.php ?>" method="POST">
-                                <textarea id="textarea" name="message" rows="2" cols="20"></textarea>
+                                <textarea id="textarea" name="message" rows="2" cols="113"></textarea>
                                 <input type="submit" value="Enviar">
                             </form>
                         </div>
