@@ -28,7 +28,6 @@ $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows === 0) {
     die("Error: No se encontró ningún usuario con el ID especificado.");
-    header("Location: ../front/login.php");
 }
 
 while ($row = $result->fetch_assoc()) {
@@ -50,4 +49,3 @@ $conn->close();
 $url="../index.php?id=$id";
 header("Location: $url");
 exit;
-?>
